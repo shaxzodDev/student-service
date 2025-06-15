@@ -88,3 +88,22 @@ To view the in-memory H2 database in a web UI, go to:
 - **Password:** *(leave blank)*
 
 ---
+
+## Running Tests and Checking Code Coverage
+
+### Run all tests
+   ```bash
+   mvn clean test
+   ```
+
+### Run tests and generate code coverage report
+   ```bash
+   mvn clean verify
+   ```
+
+### View JaCoCo code coverage report
+After running the tests with coverage, open the report located at:
+   ```bash
+   target/site/jacoco/index.html
+   ```
+![img.png](img.png)
