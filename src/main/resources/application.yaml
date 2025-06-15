@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:studentdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    hikari:
+      maximum-pool-size: 10          # Max connections
+      minimum-idle: 2                # Minimum idle connections
+      idle-timeout: 600000           # 10 minutes
+      connection-timeout: 30000      # 30 seconds
+      max-lifetime: 1800000          # 30 minutes
+      pool-name: HikariStudentPool
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  h2:
+    console:
+      enabled: true
