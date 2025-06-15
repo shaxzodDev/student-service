@@ -10,10 +10,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Service implementation for managing student-related operations.
  */
+@Transactional
 @RequiredArgsConstructor
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -41,6 +43,7 @@ public class StudentServiceImpl implements StudentService {
      * @return detailed student information
      * @throws ResourceNotFoundException if the student is not found
      */
+    @Transactional(readOnly = true)
     @Override
     public StudentDetailDTO getStudentById(Long id) {
         return studentRepository.findById(id)
@@ -55,6 +58,7 @@ public class StudentServiceImpl implements StudentService {
      * @param pageSize   the number of students per page
      * @return paginated list of student details
      */
+    @Transactional(readOnly = true)
     @Override
     public PaginationDTO<StudentDetailDTO> getAllStudents(int pageNumber, int pageSize) {
         Page<Student> students = studentRepository.findAllStudents(PageRequest.of(pageNumber, pageSize));
